@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "mateenkazia",
+    "password": null,
+    "database": "todoSequelize",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "mateenkazia",
+    "password": null,
+    "database": "todoSequelize",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "mateenkazia",
+    "password": null,
+    "database": "todoSequelize",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
