@@ -26,23 +26,23 @@ app.listen(3000 , function (){
 // get info from input
 
 
-app.get('/', function (request, response) {
+app.get("/", function (request, response) {
   let incomplete= []
   let complete = []
 
   models.todolist.findAll({order: [['createdAt', 'DESC']]})
   .then(function(todos){
 
-    for(let i=0; i<todos.length; i++){
-      if(todos[i].complete === true){
-        complete.push(todos[i])
-      }else{
+    for(var i = 0; i<todos.length; i++){
+      if(todos[i].complete === false){
         incomplete.push(todos[i])
+      }else{
+        complete.push(todos[i])
       }
     }
   })
   .then(function(){
-    response.render('index', {
+  return response.render('index', {
       pageTitle: 'To Do List',
       incomplete: incomplete,
       complete: complete
@@ -51,37 +51,37 @@ app.get('/', function (request, response) {
 });
 
 // post info into the to do list
-app.post('/', function (request, response) {
+app.post("/", function (request, response) {
   let title = request.body.todos
   models.todolist.create({
     task:title,
-    complete:false
+    complete: false
   }).then(function () {
-    response.redirect('/')
+  return response.redirect('/')
   })
 });
 
 
 // complete info and push into new list
-app.post('/completed', function (request, response) {
+app.post("/completed", function (request, response) {
   models.todolist.update({
-    completed: true
+    complete: true
   }, {
     where: {
-      id: request.body.id
+      id: request.body.completed
     }
   }).then(function () {
-    response.redirect('/')
+  return response.redirect('/')
   })
 })
 
 
-app.post('/delete', function (request, response) {
+app.post("/delete", function (request, response) {
   models.todolist.destroy({
     where: {
       id: request.body.id
     }
   }).then(function () {
-    response.redirect('/')
+  return response.redirect('/')
   })
 })

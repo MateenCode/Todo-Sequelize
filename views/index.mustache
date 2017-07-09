@@ -36,10 +36,10 @@
       <section class="completed">
         <h2>Completed Tasks</h2>
         <form class="" action="/delete" method="post">
-        {{#incomplete}}
+        {{#complete}}
         <button type="submit" name="id" value="{{id}}">
         Delete Task</button><span> {{task}}</span><br>
-        {{/incomplete}}
+        {{/complete}}
       </form>
       </section>
 
